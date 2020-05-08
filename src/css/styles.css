@@ -1,0 +1,22 @@
+table,
+th,
+td {
+  /* border: 1px solid black; */
+}
+
+.cell {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  border: 1px solid darkgray;
+  background-color: lightgray;
+}
+
+.boardContainer {
+  overflow: auto;
+}
+
+.cell-wall {
+  background-color: black;
+  border: 1px solid black;
+}
