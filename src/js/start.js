@@ -1,8 +1,8 @@
 "use strict";
 
 const boardContainer = document.getElementById("boardContainer");
-const height = 30;
-const width = 60;
+const height = 33;
+const width = 61;
 const mainBoard = {};
 
 (function setup() {
@@ -15,18 +15,19 @@ const mainBoard = {};
   );
   mainBoard.board.initialize(width, height, onCellClick);
   mainBoard.board.disableEvents = true;
-  // let maze = new Maze();
-  // let walls = maze.generateMaze(width, height);
-
-  // for (let row = 0; row < height; row++) {
-  //   for (let col = 0; col < width; col++) {
-  //     if (walls[row][col].isWall) mainBoard.board.setCellWall(row, col);
-  //   }
-  // }
 
   let board = new Board(width, height);
-  let tree = new Tree();
-  let root = tree.build(board.cells, board.startCell);
+  let maze = new Maze();
+  let walls = maze.generateMaze(width, height);
+
+  for (let row = 0; row < height; row++) {
+    for (let col = 0; col < width; col++) {
+      if (walls[row][col].isWall) {
+        let cell = board.cells[row][col];
+        if (!cell.isStart && !cell.isEnd) cell.isWall = true;
+      }
+    }
+  }
 
   for (let row = 0; row < height; row++) {
     for (let col = 0; col < width; col++) {
@@ -37,8 +38,8 @@ const mainBoard = {};
     }
   }
 
-  console.log(root);
-
+  let tree = new Tree();
+  let root = tree.build(board.cells, board.startCell);
   let dfs = new Dfs();
   dfs.subscribeToOnVisited((cell) => {
     if (!cell.isStart && !cell.isEnd)

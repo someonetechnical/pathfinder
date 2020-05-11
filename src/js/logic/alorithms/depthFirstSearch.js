@@ -23,13 +23,13 @@ function Dfs() {
 
     let traverse = () => {
       let current = stack.pop();
-      console.log("current", current);
-
       let key = this._getKey(current.cell.row, current.cell.col, height);
+
       if (visited[key] && stack.length > 0) {
         traverse();
         return;
       }
+
       visited[key] = true;
 
       this._notifyOnVisited(current.cell);
@@ -43,8 +43,6 @@ function Dfs() {
           let key = this._getKey(node.cell.row, node.cell.col, height);
           if (visited[key]) return;
           if (node.cell.isWall === false) {
-            console.log("push", node);
-
             stack.push(node);
           }
         });

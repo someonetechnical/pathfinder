@@ -9,11 +9,11 @@ function Board(width, height) {
     for (let row = 0; row < height; row++) {
       var rowCells = [];
       for (let col = 0; col < width; col++) {
-        let random = Math.round(Math.random() * 10) % 6;
+        //let random = Math.round(Math.random() * 10) % 6;
 
         let cell = new Cell(row, col);
         rowCells[col] = cell;
-        if (random == 0) cell.isWall = true;
+        //if (random == 0) cell.isWall = true;
       }
       this.cells[row] = rowCells;
     }
