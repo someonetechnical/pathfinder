@@ -15,68 +15,24 @@ function Dfs() {
     if (this._onVisitedFuncToNofify) this._onVisitedFuncToNofify(cell);
   };
 
-  // this.start = (cells, startCell, endCell, pointCells) => {
-  //   let stack = [];
-  //   stack.push(startCell);
-  //   let endNode = null;
-  //   let visited = [];
-
-  //   let traverse = () => {
-  //     debugger;
-  //     console.log("traverse stack", stack);
-  //     let current = stack.pop();
-
-  //     if (!visited[current.cell.row]) visited[current.cell.row] = [];
-  //     // else if (visited[current.cell.row][current.cell.col]) {
-  //     //   if (stack.length > 0) {
-  //     //     setTimeout(traverse, 500);
-  //     //   }
-
-  //     //   return;
-  //     // }
-
-  //     visited[current.cell.row][current.cell.col] = true;
-
-  //     if (!current.cell.isStart)
-  //       setIsVisitedFunction(current.cell.row, current.cell.col);
-
-  //     if (current.cell.isEnd) {
-  //       endNode = current;
-  //       console.log("End node found", endNode);
-  //       return;
-  //     } else {
-  //       current.nodes.forEach((node) => {
-  //         if (visited[node.cell.row] && visited[node.cell.row][node.cell.col])
-  //           return;
-
-  //         if (node.cell.isWall === false) stack.push(node);
-  //       });
-  //     }
-
-  //     if (stack.length > 0) {
-  //       setTimeout(traverse, 100);
-  //     }
-  //   };
-
-  //   traverse();
-  // };
-  
-  this.start = (root, setIsVisitedFunction, setIsPathFunction) => {
+  this.start = (root, height) => {
     let stack = [];
     stack.push(root);
     let endNode = null;
     let visited = [];
 
     let traverse = () => {
-      debugger;
-      console.log("traverse stack", stack);
       let current = stack.pop();
+      console.log("current", current);
 
-      if (!visited[current.cell.row]) visited[current.cell.row] = [];
-      visited[current.cell.row][current.cell.col] = true;
+      let key = this._getKey(current.cell.row, current.cell.col, height);
+      if (visited[key] && stack.length > 0) {
+        traverse();
+        return;
+      }
+      visited[key] = true;
 
-      if (!current.cell.isStart)
-        setIsVisitedFunction(current.cell.row, current.cell.col);
+      this._notifyOnVisited(current.cell);
 
       if (current.cell.isEnd) {
         endNode = current;
@@ -84,18 +40,25 @@ function Dfs() {
         return;
       } else {
         current.nodes.forEach((node) => {
-          if (visited[node.cell.row] && visited[node.cell.row][node.cell.col])
-            return;
+          let key = this._getKey(node.cell.row, node.cell.col, height);
+          if (visited[key]) return;
+          if (node.cell.isWall === false) {
+            console.log("push", node);
 
-          if (node.cell.isWall === false) stack.push(node);
+            stack.push(node);
+          }
         });
       }
 
       if (stack.length > 0) {
-        setTimeout(traverse, 100);
+        setTimeout(traverse, 25);
       }
     };
 
     traverse();
+  };
+
+  this._getKey = (row, col, height) => {
+    return row * (height * 10) + col;
   };
 }

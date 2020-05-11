@@ -2,7 +2,7 @@
 
 const boardContainer = document.getElementById("boardContainer");
 const height = 30;
-const width = 30;
+const width = 60;
 const mainBoard = {};
 
 (function setup() {
@@ -40,9 +40,10 @@ const mainBoard = {};
   console.log(root);
 
   let dfs = new Dfs();
-  dfs.start(
-    root,
-    (row, col) => mainBoard.board.setCellVisited(row, col),
-    () => {}
-  );
+  dfs.subscribeToOnVisited((cell) => {
+    if (!cell.isStart && !cell.isEnd)
+      mainBoard.board.setCellVisited(cell.row, cell.col);
+  });
+
+  dfs.start(root, height);
 })();
