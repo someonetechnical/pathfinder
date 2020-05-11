@@ -1,47 +1,48 @@
 "use strict";
 
 const boardContainer = document.getElementById("boardContainer");
-const height = 41;
-const width = 51;
-const clickedCells = [];
+const height = 30;
+const width = 30;
 const mainBoard = {};
 
 (function setup() {
   let onCellClick = (row, col) => {
-    let value = !clickedCells[row][col];
-    console.log("Clicked", row, col, value);
-
-    clickedCells[row][col] = value;
-
-    if (value) mainBoard.board.setCellWall(row, col);
+    mainBoard.board.setCellWall(row, col);
   };
-
-  for (let index = 0; index < height; index++) {
-    let cells = [];
-
-    for (let index = 0; index < width; index++) {
-      cells[index] = false;
-    }
-
-    clickedCells[index] = cells;
-  }
 
   mainBoard.board = new DrawBoard((content) =>
     boardContainer.appendChild(content)
   );
   mainBoard.board.initialize(width, height, onCellClick);
+  mainBoard.board.disableEvents = true;
+  // let maze = new Maze();
+  // let walls = maze.generateMaze(width, height);
 
-  let maze = new Maze();
-  let walls = maze.generateMaze(width, height);
+  // for (let row = 0; row < height; row++) {
+  //   for (let col = 0; col < width; col++) {
+  //     if (walls[row][col].isWall) mainBoard.board.setCellWall(row, col);
+  //   }
+  // }
+
+  let board = new Board(width, height);
+  let tree = new Tree();
+  let root = tree.build(board.cells, board.startCell);
 
   for (let row = 0; row < height; row++) {
     for (let col = 0; col < width; col++) {
-      if (walls[row][col].isWall) mainBoard.board.setCellWall(row, col);
+      let cell = board.cells[row][col];
+      if (cell.isWall) mainBoard.board.setCellWall(row, col);
+      else if (cell.isStart) mainBoard.board.setCellStart(row, col);
+      else if (cell.isEnd) mainBoard.board.setCellEnd(row, col);
     }
   }
+
+  console.log(root);
+
+  let dfs = new Dfs();
+  dfs.start(
+    root,
+    (row, col) => mainBoard.board.setCellVisited(row, col),
+    () => {}
+  );
 })();
-
-// function drawGrid(var width, var height)
-// {
-
-// }

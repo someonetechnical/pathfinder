@@ -20,3 +20,18 @@ td {
   background-color: black;
   border: 1px solid black;
 }
+
+.cell-start {
+  background-color: yellow;
+  border: 1px solid black;
+}
+
+.cell-end {
+  background-color: red;
+  border: 1px solid black;
+}
+
+.cell-visited {
+  background-color: green;
+  border: 1px solid black;
+}

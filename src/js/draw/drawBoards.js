@@ -7,6 +7,22 @@ function DrawBoard(setContentFunction) {
     this.board[row][col].className = "cell cell-wall";
   };
 
+  this.setCellStart = (row, col) => {
+    this.board[row][col].className = "cell cell-start";
+  };
+
+  this.setCellEnd = (row, col) => {
+    this.board[row][col].className = "cell cell-end";
+  };
+
+  this.setCellPoint = (row, col) => {
+    this.board[row][col].className = "cell cell-point";
+  }; 
+
+  this.setCellVisited = (row, col) => {
+    this.board[row][col].className = "cell cell-visited";
+  }; 
+
   this.initialize = (width, height, onCellClickFunction) => {
     let board = [];
     let table = document.createElement("TABLE");
