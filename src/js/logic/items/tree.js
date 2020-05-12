@@ -9,7 +9,6 @@ function Tree() {
     queue.push(root);
 
     while (queue.length > 0) {
-      debugger;
       let current = queue.shift();
       let key = this._getKey(current.cell.row, current.cell.col, cells.length);
 

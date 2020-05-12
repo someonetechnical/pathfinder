@@ -23,6 +23,10 @@ function DrawBoard(setContentFunction) {
     this.board[row][col].className = "cell cell-visited";
   }; 
 
+  this.setCellPath = (row, col) => {
+    this.board[row][col].className = "cell cell-path";
+  }; 
+
   this.initialize = (width, height, onCellClickFunction) => {
     let board = [];
     let table = document.createElement("TABLE");

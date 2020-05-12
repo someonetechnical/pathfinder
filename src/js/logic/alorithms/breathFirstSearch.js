@@ -1,4 +1,4 @@
-function Dfs() {
+function Bfs() {
   this.subscribeToOnPathFound = (onPathFoundFuncToNofify) => {
     this._onPathFoundFuncToNofify = onPathFoundFuncToNofify;
   };
@@ -21,21 +21,17 @@ function Dfs() {
   };
 
   this.start = (root, height) => {
-    return this._searchEndNode(root, height);
-  };
-
-  this._searchEndNode = (root, height) => {
-    let stack = [];
-    stack.push(root);
+    let queue = [];
+    queue.push(root);
     let endNode = null;
     let visited = [];
     let previous = new Map();
 
-    while (stack.length > 0) {
-      let current = stack.pop();
+    while (queue.length > 0) {
+      let current = queue.shift();
       let key = this._getKey(current.cell.row, current.cell.col, height);
 
-      if (visited[key] && stack.length > 0) {
+      if (visited[key] && queue.length > 0) {
         continue;
       }
 
@@ -53,7 +49,7 @@ function Dfs() {
           if (visited[key]) return;
           if (node.cell.isWall === false) {
             previous.set(node, current);
-            stack.push(node);
+            queue.push(node);
           }
         });
       }
