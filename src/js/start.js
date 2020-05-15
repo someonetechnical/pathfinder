@@ -2,8 +2,16 @@
 
 const boardContainer = document.getElementById("boardContainer");
 const speedSlider = new Slider("speed", "speed-value");
-const height = 33;
-const width = 61;
+const algoTitle = new AlgorithmTitle();
+const algoSelector = new AlgorithmSelector();
+const algoToggle = new ToogleButton(
+  "algorithm",
+  "container-algorithm-items",
+  "container-menu-toggle togglemenu-hidden",
+  "container-menu-toggle togglemenu-visible"
+);
+const height = 31;
+const width = 75;
 const mainBoard = {};
 const cellsToVisit = [];
 let isVisiting = false;
@@ -16,6 +24,10 @@ let path = [];
 
   const mazeBtn = document.getElementById("maze");
   mazeBtn.addEventListener("click", drawMaze);
+
+  algoSelector.subscribeToSelectionChanged(() => {
+    algoTitle.setTitle(algoSelector.getSelectedText());
+  });
 })();
 
 function onCellClick(row, col) {
@@ -47,17 +59,29 @@ function drawMaze() {
   let maze = new Maze();
   let walls = maze.generateMaze(width, height);
 
+  let wallQueue = [];
+
   for (let row = 0; row < height; row++) {
     for (let col = 0; col < width; col++) {
       if (walls[row][col].isWall) {
         let cell = mainBoard.board.cells[row][col];
         if (!cell.isStart && !cell.isEnd) {
-          mainBoard.drawBoard.setCellWall(cell.row, cell.col);
+          wallQueue.push(cell);
           cell.isWall = true;
         }
       }
     }
   }
+
+  wallCell(wallQueue);
+}
+
+function wallCell(wallQueue) {
+  if (wallQueue.length == 0) return;
+
+  let wall = wallQueue.pop();
+  mainBoard.drawBoard.setCellWall(wall.row, wall.col);
+  setTimeout(() => wallCell(wallQueue), 0);
 }
 
 function resetBoard() {
@@ -85,12 +109,15 @@ function visitCell() {
 }
 
 function start() {
+  let algorithm = getAlgorithm();
+  if (!algorithm) return;
+
   resetBoard();
 
   mainBoard.drawBoard.disableEvents = true;
   let tree = new Tree();
   let root = tree.build(mainBoard.board.cells, mainBoard.board.startCell);
-  let algorithm = getAlgorithm();
+
   algorithm.subscribeToOnVisited((cell) => {
     cellsToVisit.unshift(cell);
     if (!isVisiting && cellsToVisit.length > 0) startVisiting();
@@ -101,13 +128,8 @@ function start() {
 }
 
 function getAlgorithm() {
-  const element = document.getElementById("algorithm");
-  const value = element.value;
-
-  switch (value) {
-    case "bfs":
-      return new Bfs();
-    case "dfs":
-      return new Dfs();
-  }
+  debugger;
+  const factory = new AlgoFactory();
+  const algo = algoSelector.getSelectedValue();
+  return algo ? factory.resolve(algo) : null;
 }

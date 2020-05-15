@@ -1,83 +1,17 @@
-table,
-th,
-td {
+body {
+  /* background-color: #293e6a; */
+  background-color: #fff;
+  /* background-color: #202532; */
+  margin: 0px;
+  padding: 0px;
+
+  font-size: 1rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.01071em;
 }
 
-table {
-  border-spacing: 0;
-  border: 1px solid rgb(175, 216, 248);
-  border-collapse: collapse;
-}
-
-.options {
-}
-
-.cell {
-  width: 15px;
-  height: 15px;
-  outline: 1px solid rgb(175, 216, 248);
-}
-
-.boardContainer {
-  overflow: auto;
-}
-
-.cell-wall {
-  background-color: rgb(12, 53, 71);
-}
-
-.cell-start {
-  background-color: green;
-  /* border: 1px solid black; */
-}
-
-.cell-end {
-  background-color: red;
-  /* border: 1px solid black; */
-}
-
-.cell-visiting {
-  background-color: lightblue;
-  /* border: 1px solid yellow; */
-}
-
-.cell-visited {
-  animation-name: visitedAnimation;
-  animation-duration: 1.5s;
-  animation-timing-function: ease-out;
-  animation-delay: 0;
-  animation-direction: alternate;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-  animation-play-state: running;
-}
-
-.cell-path {
-  background-color: yellow;
-}
-
-@keyframes visitedAnimation {
-  0% {
-    transform: scale(0.2);
-    background-color: yellow(0, 0, 66, 0.75);
-    border-radius: 25%;
-  }
-
-  25% {
-    background-color: rgba(0, 0, 66, 0.75);
-  }
-
-  50% {
-    background-color: rgba(17, 104, 217, 0.75);
-  }
-
-  75% {
-    transform: scale(1.2);
-    background-color: rgba(0, 217, 159, 0.75);
-  }
-
-  100% {
-    transform: scale(1);
-    background-color: rgba(0, 190, 218, 0.75);
-  }
+#algorithm-title {
+  width: 178px;
 }

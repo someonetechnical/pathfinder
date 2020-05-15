@@ -1,0 +1,117 @@
+.boardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table {
+  border-spacing: 0;
+  border: 1px solid #757575;
+  border-collapse: collapse;
+  /* width: 90%; */
+  background-color: #fff;
+  /* padding: 5px; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cell {
+  width: 17px;
+  height: 17px;
+  /* outline: 1px solid rgb(175, 216, 248); */
+  border: 1px solid #b3b3b3;
+  /* background-color: #fff; */
+}
+
+.boardContainer {
+  overflow: hidden;
+}
+
+.cell-wall {
+  background-color: rgb(12, 53, 71);
+
+  animation-name: wallAnimation;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.cell-start {
+  background-color: rgb(0, 255, 0);
+  border: 1px solid rgb(0, 255, 0);
+}
+
+.cell-end {
+  background-color: red;
+  border: 1px solid red;
+}
+
+.cell-visited {
+  animation-name: visitedAnimation;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.cell-path {
+  background-color: yellow;
+}
+
+@keyframes wallAnimation {
+  0% {
+    transform: scale(0.75) translateZ(50px);
+    /* translateY(-30px) translateX(0); */
+    border: 1px solid #b3b3b3;
+    opacity: 0.2;
+  }
+  25% {
+    border: 1px solid #b3b3b3;
+  }
+  50% {
+    border: 1px solid #b3b3b3;
+  }
+  100% {
+    transform: scale(1) translateZ(0) translateY(0) translateX(0);
+    border: 1px solid rgb(12, 53, 71);
+    opacity: 1;
+  }
+}
+
+@keyframes visitedAnimation {
+  0% {
+    border: 1px solid yellow;
+    background-color: yellow;
+  }
+
+  10% {
+    transform: scale(0.2);
+    background-color: #aafcd4;
+    border-radius: 25%;
+  }
+
+  25% {
+    background-color: #8dfcc6;
+  }
+
+  50% {
+    background-color: #58f8ab;
+  }
+
+  75% {
+    background-color: #2f8f75;
+  }
+
+  100% {
+    transform: scale(1);
+    border: 1px solid rgb(66, 201, 133);
+    background-color: #35a788;
+  }
+}

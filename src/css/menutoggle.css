@@ -1,0 +1,66 @@
+.container-algorithm {
+  position: relative;
+}
+
+.container-menu-toggle {
+  position: absolute;
+  z-index: 1000;
+  top: 44px;
+  left: 0px;
+  border-radius: 4px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  opacity: 1;
+  box-shadow: none;
+  transform: none;
+  transition: opacity 262ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    transform 174ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transform-origin: 79px 0px;
+
+  font-size: 1rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.01071em;
+
+  border: 1px solid #424242;
+  background-color: #e0e0e0;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.menu-list {
+  list-style-type: none;
+  background-color: transparent;
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  outline: 0;
+}
+
+.menu-item {
+  cursor: pointer;
+  margin: 0;
+  outline: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-top: 6px;
+  white-space: nowrap;
+  padding-bottom: 6px;
+}
+
+.menu-item:hover {
+  background-color: #696969;
+}
+
+.togglemenu-hidden {
+  display: none;
+}
+
+.togglemenu-visible {
+  display: inline-block;
+}

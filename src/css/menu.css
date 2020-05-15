@@ -1,0 +1,12 @@
+.container-menu {
+   /* background-color: #384255; */
+   background-color: #333333;
+   
+   display: flex;
+   padding: 0 15px;
+   height: 64px;
+   justify-content: space-between;
+   margin-bottom: 25px;
+   align-items: center;
+   color: #fff;
+}
