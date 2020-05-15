@@ -1,2 +1,2 @@
 # pathfinder
- Visual graph treversion
+ Graph traversal visualizer.
