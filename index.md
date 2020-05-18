@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="./src/css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="./src/css/menu.css" />
-    <link rel="stylesheet" type="text/css" href="./src/css/board.css" />
-    <link rel="stylesheet" type="text/css" href="./src/css/slider.css" />
-    <link rel="stylesheet" type="text/css" href="./src/css/button.css" />
-    <link rel="stylesheet" type="text/css" href="./src/css/menutoggle.css" />
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="./css/menu.css" />
+    <link rel="stylesheet" type="text/css" href="./css/board.css" />
+    <link rel="stylesheet" type="text/css" href="./css/slider.css" />
+    <link rel="stylesheet" type="text/css" href="./css/button.css" />
+    <link rel="stylesheet" type="text/css" href="./css/menutoggle.css" />
     <title>Pathfinder</title>
   </head>
   <body>
@@ -55,16 +55,16 @@
     type="text/javascript"
     src="./js/logic/alorithms/depthFirstSearch.js"
   ></script>
-  <script type="text/javascript" src="./src/js/draw/slider.js"></script>
-  <script type="text/javascript" src="./src/js/draw/toggleButton.js"></script>
-  <script type="text/javascript" src="./src/js/logic/items/cell.js"></script>
-  <script type="text/javascript" src="./src/js/logic/items/board.js"></script>
-  <script type="text/javascript" src="./src/js/logic/items/node.js"></script>
-  <script type="text/javascript" src="./src/js/logic/items/tree.js"></script>
-  <script type="text/javascript" src="./src/js/draw/drawBoards.js"></script>
-  <script type="text/javascript" src="./src/js/draw/algorithmSelector.js"></script>
-  <script type="text/javascript" src="./src/js/draw/algorithmTitle.js"></script>
-  <script type="text/javascript" src="./src/js/logic/maze.js"></script>
-  <script type="text/javascript" src="./src/js/logic/alorithms/algoFactory.js"></script>
-  <script type="text/javascript" src="./src/js/start.js"></script>
+  <script type="text/javascript" src="./js/draw/slider.js"></script>
+  <script type="text/javascript" src="./js/draw/toggleButton.js"></script>
+  <script type="text/javascript" src="./js/logic/items/cell.js"></script>
+  <script type="text/javascript" src="./js/logic/items/board.js"></script>
+  <script type="text/javascript" src="./js/logic/items/node.js"></script>
+  <script type="text/javascript" src="./js/logic/items/tree.js"></script>
+  <script type="text/javascript" src="./js/draw/drawBoards.js"></script>
+  <script type="text/javascript" src="./js/draw/algorithmSelector.js"></script>
+  <script type="text/javascript" src="./js/draw/algorithmTitle.js"></script>
+  <script type="text/javascript" src="./js/logic/maze.js"></script>
+  <script type="text/javascript" src="./js/logic/alorithms/algoFactory.js"></script>
+  <script type="text/javascript" src="./js/start.js"></script>
 </html>
