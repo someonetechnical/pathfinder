@@ -1,12 +1,11 @@
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="./css/menu.css" />
-    <link rel="stylesheet" type="text/css" href="./css/board.css" />
-    <link rel="stylesheet" type="text/css" href="./css/slider.css" />
-    <link rel="stylesheet" type="text/css" href="./css/button.css" />
-    <link rel="stylesheet" type="text/css" href="./css/menutoggle.css" />
-    <title>Pathfinder</title>
+    <link rel="stylesheet" type="text/css" href="./src/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="./src/css/menu.css" />
+    <link rel="stylesheet" type="text/css" href="./src/css/board.css" />
+    <link rel="stylesheet" type="text/css" href="./src/css/slider.css" />
+    <link rel="stylesheet" type="text/css" href="./src/css/button.css" />
+    <link rel="stylesheet" type="text/css" href="./src/css/menutoggle.css" />
   </head>
   <body>
     <div class="container-menu">
