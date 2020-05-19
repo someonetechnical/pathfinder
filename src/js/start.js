@@ -16,6 +16,7 @@ const width = 75;
 const cellsToVisit = [];
 const board = new Board(width, height);
 const drawBoard = new DrawBoard(addDrawBoardToDOM);
+const drawWalls = new DrawWall(drawBoard, width, height);
 
 let isVisiting = false;
 let path = [];
@@ -35,7 +36,6 @@ let path = [];
 })();
 
 function onCellClick(row, col) {
-  console.log(board);
   const cell = board.cells[row][col];
   if (cell.isWall || cell.isEnd || cell.isStart) return;
   cell.isWall = true;
@@ -77,21 +77,7 @@ function drawMaze() {
     }
   }
 
-  wallCell(wallQueue);
-}
-
-function wallCell(wallQueue) {
-  if (wallQueue.length == 0) return;
-
-  let lastWall = wallQueue.pop();
-  drawBoard.setCellWall(lastWall.row, lastWall.col);
-
-  if (wallQueue.length == 0) return;
-
-  let firstWall = wallQueue.shift();
-  drawBoard.setCellWall(firstWall.row, firstWall.col);
-
-  setTimeout(() => wallCell(wallQueue), 0);
+  drawWalls.drawWalls(wallQueue);
 }
 
 function resetBoard() {
